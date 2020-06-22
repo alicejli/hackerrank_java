@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        int cases = scanner.nextInt();
+        for(int i = 0; i < cases; i++){
+            String s = scanner.next();
+            int l = s.length();
+            String even = new String();
+            String odd = new String();
+            for(int j = 0; j < l; j++){
+                if(j % 2 == 0){
+                    even = even + Character.toString(s.charAt(j));
+                }
+                else{
+                    odd = odd + Character.toString(s.charAt(j));
+                }    
+            }
+            System.out.println(even + " " + odd);
+        }
+        scanner.close();
+    }
+}
