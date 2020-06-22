@@ -1,0 +1,48 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    /*
+     * Complete the timeConversion function below.
+     */
+    static String timeConversion(String s) {
+        //if last 2 digits are "AM", then just remove the AM part, otherwise +12 to the hours
+        int l = s.length();
+        String a = s.substring(l-2,l);
+        String b = s.substring(0, l-2);
+        String c = s.substring(0, 2);
+        String d = s.substring(2, l-2);
+        if((a.equals("AM") && !c.equals("12")) || a.equals("PM") && c.equals("12")){
+            return(b);
+        }
+        else if(c.equals("12")){
+            String e = "00";
+            return(e + d);
+        }
+        else{
+            int f = Integer.valueOf(c) + 12;
+            String g = String.valueOf(f);
+            return(g+d);
+        }
+            
+}
+
+    private static final Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scan.nextLine();
+
+        String result = timeConversion(s);
+
+        bw.write(result);
+        bw.newLine();
+
+        bw.close();
+    }
+}
