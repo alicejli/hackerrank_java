@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        //first need to get N as number of elements in L
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();    
+        //then write L to a doubly-linked list as you will be inserting/removing so a doubly-linked list will be faster than using an array
+        //System.out.println(N);
+        LinkedList<Integer> L = new LinkedList<Integer>();
+        scan.nextLine();
+        for(int i = 0; i < N; i++){
+            L.addLast(scan.nextInt());
+        }
+        //System.out.println(L);
+        //get Q number of queries
+        int Q = scan.nextInt();
+        //System.out.println(Q);
+        //set if statement based on whether to Insert or Delete
+        scan.nextLine();
+        for(int i = 0; i < Q; i++){
+            String current = scan.nextLine();
+            if(current.contains("Insert")){
+                int ind = scan.nextInt();
+                int ele = scan.nextInt();
+                L.add(ind, ele);
+            }
+            else if(current.contains("Delete")){
+                int ind = scan.nextInt();
+                L.remove(ind);
+            }
+            if(scan.hasNext()){
+                scan.nextLine();
+            }
+        }
+        //System.out.println(L);
+        for(int i = 0; i < L.size(); i++){
+            System.out.print(L.get(i) + " ");
+        } 
+    }
+}
